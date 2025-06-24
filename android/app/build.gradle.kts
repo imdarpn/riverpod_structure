@@ -8,23 +8,24 @@ plugins {
 android {
     namespace = "com.example.riverpod_structure"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
+        isCoreLibraryDesugaringEnabled = true
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
 
+    }
+    // For Kotlin projects
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_11.toString()
+        jvmTarget = "1.8"
     }
-
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "com.example.riverpod_structure"
+        applicationId = "com.example.c2c"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
-        minSdk = flutter.minSdkVersion
+        minSdk = 24
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
@@ -38,6 +39,15 @@ android {
         }
     }
 }
+dependencies {
+    // For AGP 7.4+
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.3")
+    // For AGP 7.3
+    // coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.2.3")
+    // For AGP 4.0 to 7.2
+    // coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.9")
+}
+
 
 flutter {
     source = "../.."
